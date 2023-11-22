@@ -12,7 +12,7 @@ model User {
   name String
   email String @unique
   phone String
-  date DateTime
+  date String
   cep String 
   cpf String @unique
   document String 

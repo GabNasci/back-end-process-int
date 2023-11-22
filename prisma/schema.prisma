@@ -39,12 +39,12 @@ model Course {
 }
 
 model Enrollment {
-  id Int @id @default(autoincrement())
   createdAt DateTime @default(now())
   userId Int
   courseId Int
   user User @relation(fields: [userId], references: [id])
   course Course @relation(fields: [courseId], references: [id])
 
+  @@id([userId, courseId])
   @@map("enrollments")
 }

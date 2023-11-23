@@ -1,0 +1,50 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id Int @id @default(autoincrement())
+  name String
+  email String @unique
+  phone String
+  date String
+  cep String 
+  cpf String @unique
+  document String 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  enrollments Enrollment[]
+
+  @@map("users")
+}
+
+model Course {
+  id Int @id @default(autoincrement())
+  name String @unique
+  description String @db.VarChar(255)
+  time Int @db.SmallInt
+  level String
+  modality String
+  value Decimal @db.Decimal(10, 2)
+  image String
+  icon String
+  enrollments Enrollment[]
+
+  @@map("courses")
+}
+
+model Enrollment {
+  createdAt DateTime @default(now())
+  userId Int
+  courseId Int
+  user User @relation(fields: [userId], references: [id])
+  course Course @relation(fields: [courseId], references: [id])
+
+  @@id([userId, courseId])
+  @@map("enrollments")
+}

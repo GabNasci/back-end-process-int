@@ -1,6 +1,8 @@
 # back-end-process-int
 Repositório destinado ao desenvolvimento do back-end da aplicação para o teste do integrado.
 
+#####Documentação: [Teste-Integrado-Notion](https://spectacular-piccolo-51a.notion.site/Teste-Integrado-9c4b192c8ef0464797308650d6ac64a3?pvs=4)
+
 ## Para rodar o projeto
 
 Para rodar o projeto utilizei um container __Docker__ utilizando um banco __Postgres__ que foi criado com:
